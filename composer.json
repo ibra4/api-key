@@ -1,6 +1,6 @@
 {
-    "name": "ibra/api_key",
-    "description": "Provides api_key from authenticatable models",
+    "name": "ibra4/api-key",
+    "description": "Provides api key fro authenticatable models",
     "type": "library",
     "autoload": {
         "psr-4": {
@@ -9,7 +9,7 @@
     },
     "authors": [
         {
-            "name": "ibra",
+            "name": "Ibrahim Hammad",
             "email": "i.hmd@outlook.com"
         }
     ],
