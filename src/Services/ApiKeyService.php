@@ -1,15 +1,33 @@
 <?php
 
-namespace Ibra\ApiKey\Repositories;
+namespace Ibra\ApiKey\Services;
 
 use Ibra\ApiKey\Interfaces\HasApiKeyInterface;
 use Ibra\ApiKey\Models\ApiKey;
+use Ibra\ApiKey\Repositories\ApiKeyRepository;
 
 /**
- * @class ApiKeyRepository
+ * @class ApiKeyService
  */
-class ApiKeyRepository
+class ApiKeyService
 {
+    /**
+     * Instance of ApiKeyRepository.
+     *
+     * @var ApiKeyRepository
+     */
+    protected $apiKeyRepository;
+
+    /**
+     * ApiKeyService constructor.
+     *
+     * @param ApiKeyRepository $apiKeyRepository
+     */
+    public function __construct(ApiKeyRepository $apiKeyRepository)
+    {
+        $this->apiKeyRepository = $apiKeyRepository;
+    }
+
     /**
      * Get an API key by id.
      *
@@ -18,7 +36,7 @@ class ApiKeyRepository
      */
     public function getById(mixed $id)
     {
-        return ApiKey::findOrFail('id', $id);
+        return $this->apiKeyRepository->getByClientId($id);
     }
 
     /**
@@ -29,7 +47,7 @@ class ApiKeyRepository
      */
     public function getByClientId(string $client_id)
     {
-        return ApiKey::where('client_id', $client_id)->first();
+        return $this->apiKeyRepository->getByClientId($client_id);
     }
 
     /**
@@ -41,7 +59,7 @@ class ApiKeyRepository
      */
     public function getByModelAndModelId(string $model, mixed $model_id)
     {
-        return ApiKey::where('model', $model)->where('model_id', $model_id)->first();
+        return $this->apiKeyRepository->getByModelAndModelId($model, $model_id);
     }
 
     /**
@@ -51,18 +69,13 @@ class ApiKeyRepository
      * @param string $key
      * @param string $clientId
      * @param \Illuminate\Support\Carbon $expiresAt
-     * @param int $expiresAt
      * @param string|null $description
      * @return ApiKey
      */
-    public function create(HasApiKeyInterface $model, string $key, string $clientId, \Illuminate\Support\Carbon $expiresAt, string $description = null)
+    public function create(HasApiKeyInterface $model, string $key, string $clientId, string $description = null)
     {
-        return $model->apiKeys()->create([
-            'key' => $key,
-            'client_id' => $clientId,
-            'expires_at' => $expiresAt,
-            'description' => $description
-        ]);
+        $expiresAt = now()->addSeconds(config('api_key.expires'));
+        return $this->apiKeyRepository->create($model, $key, $clientId, $expiresAt, $description);
     }
 
     /**
@@ -73,7 +86,7 @@ class ApiKeyRepository
      */
     public function deactivate(ApiKey $apiKey)
     {
-        return $apiKey->update(['is_active' => false]);
+        return $this->apiKeyRepository->deactivate($apiKey);
     }
 
     /**
@@ -84,7 +97,7 @@ class ApiKeyRepository
      */
     public function activate(ApiKey $apiKey)
     {
-        return $apiKey->update(['is_active' => false]);
+        return $this->apiKeyRepository->activate($apiKey);
     }
 
     /**
@@ -95,16 +108,6 @@ class ApiKeyRepository
      */
     public function remove(ApiKey $apiKey)
     {
-        return $apiKey->delete();
-    }
-
-    /**
-     * List all API keys as an array.
-     *
-     * @return array
-     */
-    public function listAllAsTableArray()
-    {
-        return ApiKey::select('client_id', 'description', 'model', 'model_id', 'key', 'is_active', 'expires_at', 'created_at')->get()->toArray();
+        return $this->apiKeyRepository->activate($apiKey);
     }
 }
