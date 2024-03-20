@@ -19,5 +19,6 @@
                 "Ibra\\ApiKey\\Providers\\ApiKeyServiceProvider"
             ]
         }
-    }
+    },
+    "license": "MIT"
 }
