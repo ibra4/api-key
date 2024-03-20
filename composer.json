@@ -1,6 +1,6 @@
 {
     "name": "ibra4/api-key",
-    "description": "Provides api key fro authenticatable models",
+    "description": "Provides api key for authenticatable models",
     "type": "library",
     "autoload": {
         "psr-4": {

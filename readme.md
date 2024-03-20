@@ -7,7 +7,7 @@ This Laravel package provides a simple API key authentication mechanism for your
 You can install this package via Composer:
 
 ```bash
-composer require ibra/api-key
+composer require ibra4/api-key
 ```
 
 Next, you should publish the package's configuration file:
