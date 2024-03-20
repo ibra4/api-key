@@ -2,6 +2,7 @@
     "name": "ibra4/api-key",
     "description": "Provides api key for authenticatable models",
     "type": "library",
+    "php": "^7.3|^8.0",
     "autoload": {
         "psr-4": {
             "Ibra\\ApiKey\\": "src/"

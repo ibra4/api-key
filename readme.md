@@ -2,6 +2,12 @@
 
 This Laravel package provides a simple API key authentication mechanism for your Laravel applications. It allows you to protect your API endpoints by validating API keys sent with each request.
 
+## Requirements
+
+- PHP 7.3 or higher
+
+Tested on Laravel ^8.75
+
 ## Installation
 
 You can install this package via Composer:
@@ -35,6 +41,7 @@ php artisan api_key:generate ibra 1
 This command will generate a new API key and associate it with a App\Models\User model with id 1.
 
 Arguments
+
 - client_id: client's name
 - id: Model id
 - model <i>(optional)</i>: Model class name (default: App\Models\User)
@@ -79,6 +86,7 @@ php artisan api-key:list
 ```
 
 This command will display a list of all API keys along with their associated user and status, like.
+
 <table>
     <thead>
         <tr>
@@ -115,7 +123,6 @@ This command will display a list of all API keys along with their associated use
         </tr>
     </tbody>
 </table>
-
 
 ## Middleware Logic
 
