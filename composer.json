@@ -1,0 +1,23 @@
+{
+    "name": "ibra/api_key",
+    "description": "Provides api_key from authenticatable models",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Ibra\\ApiKey\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ibra",
+            "email": "i.hmd@outlook.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ibra\\ApiKey\\Providers\\ApiKeyServiceProvider"
+            ]
+        }
+    }
+}
