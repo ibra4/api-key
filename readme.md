@@ -30,6 +30,22 @@ After publishing the configuration file, you can modify the settings in `config/
 
 ## Usage
 
+### Prepare your model
+
+- Implement `HasApiKeyInterface` interface
+- Use `HasApiKey` trait
+  ```patch
+  <?php 
+
+  + use Ibra\ApiKey\Interfaces\HasApiKeyInterface;
+  + use Ibra\ApiKey\Traits\HasApiKey;
+  - class User extends Authenticatable {
+  + class User extends Authenticatable implements HasApiKeyInterface {
+  +    use HasApiKey;
+  
+  }
+  ```
+
 ### Generating API Keys
 
 To generate an API key, you can use the provided artisan command:
