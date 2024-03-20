@@ -131,7 +131,7 @@ This package is open-source software licensed under the [MIT license](LICENSE.md
 
 ## Credits
 
-This package is developed and maintained by [Your Name or Company Name].
+This package is developed and maintained by [Ibrahim Hammad](https://github.com/ibra4).
 
 ---
 
