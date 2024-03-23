@@ -22,6 +22,11 @@ Next, you should publish the package's configuration file:
 php artisan vendor:publish --tag=api_key
 ```
 
+Then run migrations
+```bash
+php artisan migrate
+```
+
 This command will publish the `api_key.php` configuration file to your `config` directory.
 
 ## Configuration
