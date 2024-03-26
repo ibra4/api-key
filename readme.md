@@ -1,3 +1,5 @@
+[![StandWithPalestineBadge](https://raw.githubusercontent.com/saedyousef/StandWithPalestine/main/badges/flat/IStandWithPalestine.svg)](https://techforpalestine.org/learn-more)
+
 # Laravel API Key Authentication Package
 
 This Laravel package provides a simple API key authentication mechanism for your Laravel applications. It allows you to protect your API endpoints by validating API keys sent with each request.
